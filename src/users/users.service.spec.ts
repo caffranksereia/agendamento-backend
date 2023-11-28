@@ -32,4 +32,8 @@ describe('UsersService', () => {
       );
     });
   });
+
+  it('should be not throw if  called  with valid params id', async () => {
+    await expect(service.getId({ id: '2' })).resolves.not.toThrow();
+  });
 });
