@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException } from '@nestjs/common';
 export type User = any;
 @Injectable()
 export class UsersService {
@@ -18,5 +18,11 @@ export class UsersService {
   async findOne({ username }): Promise<any> {
     const data = await this.users.find((user) => user.username === username);
     return data;
+  }
+
+  async getId({ id }): Promise<any> {
+    if (!id || id === null) {
+      return new BadRequestException();
+    }
   }
 }
