@@ -24,4 +24,12 @@ describe('UsersService', () => {
   it('should be not throw if  called  with valid params', async () => {
     await expect(service.findOne({ username: 'maria' })).resolves.not.toThrow();
   });
+
+  describe('getId()', () => {
+    it('should be throw if called with invalid params id', async () => {
+      await expect(service.getId({ id: '' })).rejects.toThrow(
+        new BadRequestException(),
+      );
+    });
+  });
 });
