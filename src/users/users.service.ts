@@ -24,5 +24,24 @@ export class UsersService {
     if (!id || id === null) {
       return new BadRequestException();
     }
+
+    const data = await this.users.find(id);
+    return data;
+  }
+
+  async getAlId({ id }): Promise<any> {
+    if (!id || id === null) {
+      return new BadRequestException();
+    }
+    const data = await this.users;
+    return data;
+  }
+
+  async insertUser({ username, password }): Promise<any> {
+    if (username === null || password === null) {
+      return new BadRequestException();
+    }
+    const data = await this.users.push(username, password);
+    return data;
   }
 }
